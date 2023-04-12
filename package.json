@@ -4,10 +4,13 @@
   "main": "index.js",
   "repository": "https://github.com/AurimasT/Books.git",
   "author": "AurimasT <qzmp1793@gmail.com>",
-  "license": "MIT"
-},
-
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+,
 "scripts": {
-  "test": "jest",
-  "dev": "index.html"
+  "dev": "parcel index.html",
+  "build": "parcel build index.html"
+}
 }
