@@ -140,7 +140,7 @@ bookList.sort((a, b) => {
 //Sort by Author
 
 const sortAuthorBtn = document.getElementById("sort-author-btn");
-  function sortBooksByAuthor() {
+function sortBooksByAuthor() {
   bookList.sort((a, b) => {
     const authorA = a.author.toLowerCase();
     const authorB = b.author.toLowerCase();
@@ -167,7 +167,7 @@ const sortHorrorBtn = document.getElementById("sort-horror-btn");
 const sortBiographyBtn = document.getElementById("sort-biography-btn");
 
 function sortBooksByCategory(category) {
-  const sortedBooks = bookList.filter(book => book.category === category);
+  const sortedBooks = bookList.filter((book) => book.category === category);
   displayBookList(sortedBooks);
 }
 
@@ -176,25 +176,41 @@ sortRomanBtn.addEventListener("click", () => sortBooksByCategory("Roman"));
 sortTragedyBtn.addEventListener("click", () => sortBooksByCategory("Tragedy"));
 sortDramaBtn.addEventListener("click", () => sortBooksByCategory("Drama"));
 sortHorrorBtn.addEventListener("click", () => sortBooksByCategory("Horror"));
-sortBiographyBtn.addEventListener("click", () => sortBooksByCategory("Biography"));
+sortBiographyBtn.addEventListener("click", () =>
+  sortBooksByCategory("Biography")
+);
 
-// Sort by price
-
+// Sort by price need FIX
 function sortBooksByPriceLowToHigh() {
   const sortedBooks = bookList.slice().sort((a, b) => a.price - b.price);
   displayBookList(sortedBooks);
 }
 
-// Define a function to sort the book list by price from highest to lowest
 function sortBooksByPriceHighToLow() {
   const sortedBooks = bookList.slice().sort((a, b) => b.price - a.price);
   displayBookList(sortedBooks);
 }
 
-// Get the "Sort by Price" buttons from the navigation
 const sortPriceLowToHighBtn = document.getElementById("sort-price-low-to-high-btn");
 const sortPriceHighToLowBtn = document.getElementById("sort-price-high-to-low-btn");
 
-// Add event listeners to the "Sort by Price" buttons
 sortPriceLowToHighBtn.addEventListener("click", sortBooksByPriceLowToHigh);
 sortPriceHighToLowBtn.addEventListener("click", sortBooksByPriceHighToLow);
+
+
+//Search NEED FIX
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+searchButton.addEventListener("click", () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredBooks = bookList.filter((book) => {
+    const title = book.title.toLowerCase();
+    const author = book.author.toLowerCase();
+    const category = book.category.toLowerCase();
+    const publicationDate = book.publicationDate.toLowerCase();
+    const price = book.price.toLowerCase();
+    return title.includes(searchTerm) || author.includes(searchTerm) || publicationDate.includes(searchTerm) || price.includes(searchTerm) || category.includes(searchTerm);
+  });
+  displayBookList(filteredBooks);
+});
