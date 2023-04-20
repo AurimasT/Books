@@ -90,4 +90,12 @@
    box-shadow: 1px 3px 4px #E6E6E6;
    height: 25px !important;
  }
- 
+ .btn btn-primary{
+  display: flex;
+  flex-direction: row;
+ }
+
+ img {
+  max-width: 300px;
+  max-height: 300px;
+ }
